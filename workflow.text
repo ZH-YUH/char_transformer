@@ -1,0 +1,71 @@
+Character-Level LLM Project: Full Workflow Plan
+
+=================================================
+Stage 1: Setup & Data Preparation
+=================================================
+Goal: Build a clean input pipeline using text8.
+Steps:
+1. Download and preprocess text8 dataset.
+2. Normalize characters (a-z, space).
+3. Encode text into integer tokens.
+4. Split into train/valid/test sets (e.g., 90/5/5%).
+5. Create DataLoader using sliding windows of context length L.
+
+=================================================
+Stage 2: Baseline Model Implementation
+=================================================
+Goal: Run a minimal working Transformer or LSTM model.
+Steps:
+1. Implement Transformer architecture.
+2. Define hyperparameters (L, d_model, n_heads, etc.).
+3. Test forward pass and confirm loss decreases.
+4. Verify model generates text (even if gibberish).
+
+=================================================
+Stage 3: Small-Scale Experiments
+=================================================
+Goal: Explore model design and training choices at small scale.
+Experiment Dimensions:
+- Model: n_layers, n_heads, d_model, ff_dim, dropout, positional encoding.
+- Context length (L): {32, 64, 128, 256, 512}.
+- Loss: Cross-entropy, label smoothing.
+- Optimization: AdamW vs Adam vs SGD.
+- Regularization: dropout, weight decay.
+Metrics:
+- Validation loss, accuracy, bits-per-character (BPC), GPU usage.
+Tools: TensorBoard or WandB for logging.
+
+=================================================
+Stage 4: Scaling Up & Refinement
+=================================================
+Goal: Stress-test the best small-scale design on larger configs.
+Steps:
+1. Increase model size moderately (e.g., L=256, d_model=384).
+2. Fine-tune batch size, LR, optimizer settings.
+3. Add gradient clipping, mixed precision if needed.
+4. Monitor GPU memory and training stability.
+Outcome: Stable, scalable configuration ready for long run.
+
+=================================================
+Stage 5: Final Training & Evaluation
+=================================================
+Goal: Commit to final config and train to convergence.
+Steps:
+1. Lock hyperparameters.
+2. Train for several hours or until validation loss plateaus.
+3. Save checkpoints and logs.
+4. Evaluate on test set (loss, accuracy, BPC, perplexity).
+5. Generate qualitative samples with different temperatures.
+Output: Final model + evaluation results.
+
+=================================================
+Stage 6: Report Writing
+=================================================
+Goal: Document your full experimental process.
+Outline:
+1. Introduction – motivation & dataset.
+2. Model Description – architecture overview.
+3. Experiments & Tuning – results & analysis.
+4. Discussion – key insights, trade-offs.
+5. Conclusion – summary & possible future directions.
+Evaluation Weights: 70% exploration, 20% report, 10% code quality.

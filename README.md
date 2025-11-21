@@ -40,4 +40,4 @@ CHAR_TRANSFORMER/
 │                             # CSV logs of hyperparameter search and model comparisons
 │
 ├── README.md                 # (this file)
-
+├── requirements.txt

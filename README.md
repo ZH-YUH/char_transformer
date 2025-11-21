@@ -1,20 +1,43 @@
-# Basic Transformer For next character prediction
+# Char Transformer
 
-This repository contains a minimal character-level Transformer (decoder-only) implemented in JAX/Flax for next-character prediction. 
+This repository contains experiments with **character-level language models** on text8 datasets
+It includes several Transformer variants and a LSTM model
 
-Repository structure
---------------------
+The notebooks that are named "smallexperiment..." runs when we have limited computation power.
+The notebooks that are named "transformer" and "lstm" runs when we have more computation power.
 
-Top-level layout:
+The .csv files contains the best parameters found by grid search from the small experiments
 
-- `transformer.ipynb` - Primary Jupyter notebook used for experimenting, training and generation. The notebook contains data loading, model initialization, training loop, and a JITted token generator cell.
-- `models/` - Python package containing the Flax model implementation.
-	- `models/models.py` - Minimal, decoder-only Transformer implementation (token & positional embeddings, DecoderBlocks, MLP, weight tying, causal attention).
-- `data/` - a preprocessed `text8_dataset` used in the notebook.
+---
 
+## Project Structure
 
-Notes and pointers
-------------------
+```text
+CHAR_TRANSFORMER/
+├── data/
+│   ├── text8_train.txt
+│   └── text8_test.txt
+│
+├── models/
+│   ├── __pycache__/
+│   ├── models1.py            # best performing model copied from models.ipynb
+│   ├── models2.py			  # second best performing model copied from models.ipynb
+│   ├── models.ipynb          # every model we came up with
+│   └── models_pytorch_variants.ipynb
+│
+├── util/
+│   ├── __pycache__/
+│   └── generation.py
+│
+├── transformer1.ipynb        # main Transformer training & evaluation notebook for model1
+├── transformer2.ipynb        # main Transformer training & evaluation notebook for model2
+│
+├── lstm.ipynb                # LSTM training / evaluation
+├── mini_grid_results_all_models.csv
+├── lstm_round2_results.csv
+├── lstm_smallExperiment_results.csv
+├── second_round_results_all_models.csv
+│                             # CSV logs of hyperparameter search and model comparisons
+│
+├── README.md                 # (this file)
 
-- The notebook and model are intentionally small and pedagogical. They are a good starting point.
-- The performance of the implemented model is (extremely) bad. There is a large room for experimentation and improvement.

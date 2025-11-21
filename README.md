@@ -31,8 +31,12 @@ CHAR_TRANSFORMER/
 │
 ├── transformer1.ipynb        # main Transformer training & evaluation notebook for model1
 ├── transformer2.ipynb        # main Transformer training & evaluation notebook for model2
-│
 ├── lstm.ipynb                # LSTM training / evaluation
+│
+├── smallExperiment_lstm.ipynb
+├── smallExperiment_varient_model.ipynb
+│                             # model tuning and evaluation with limited resource
+│
 ├── mini_grid_results_all_models.csv
 ├── lstm_round2_results.csv
 ├── lstm_smallExperiment_results.csv
